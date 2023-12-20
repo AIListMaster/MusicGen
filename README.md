@@ -13,6 +13,7 @@ sdk: gradio
 sdk_version: 3.34.0
 pinned: true
 license: "cc-by-nc-4.0"
+disable_embedding: true
 ---
 # AudioCraft
 ![docs badge](https://github.com/facebookresearch/audiocraft/workflows/audiocraft_docs/badge.svg)
