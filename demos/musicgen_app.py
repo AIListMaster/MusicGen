@@ -242,9 +242,9 @@ def toggle_diffusion(choice):
 
 def ui_full(launch_kwargs):
     with gr.Blocks(theme="Hev832/Hev832") as interface:
+        gr.Markdown("# <div style='text-align: center;'>MusicGen</div>")
         gr.Markdown(
             """
-            # MusicGen
             This is your private demo for [MusicGen](https://github.com/facebookresearch/audiocraft),
             a simple and controllable model for music generation
             presented at: ["Simple and Controllable Music Generation"](https://huggingface.co/papers/2306.05284)
