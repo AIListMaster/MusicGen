@@ -241,7 +241,7 @@ def toggle_diffusion(choice):
 
 
 def ui_full(launch_kwargs):
-    with gr.Blocks() as interface:
+    with gr.Blocks(theme="Hev832/Hev832") as interface:
         gr.Markdown(
             """
             # MusicGen
@@ -257,6 +257,8 @@ def ui_full(launch_kwargs):
                     with gr.Column():
                         radio = gr.Radio(["file", "mic"], value="file",
                                          label="Condition on a melody (optional) File or Mic")
+                with gr.Column():
+                    with gr.Row():
                         melody = gr.Audio(source="upload", type="numpy", label="File",
                                           interactive=True, elem_id="melody-input")
                 with gr.Row():
@@ -270,6 +272,7 @@ def ui_full(launch_kwargs):
                                       "facebook/musicgen-stereo-melody", "facebook/musicgen-stereo-large",
                                       "facebook/musicgen-stereo-melody-large"],
                                      label="Model", value="facebook/musicgen-stereo-melody", interactive=True)
+                with gr.Row():
                     model_path = gr.Text(label="Model Path (custom models)")
                 with gr.Row():
                     decoder = gr.Radio(["Default", "MultiBand_Diffusion"],
@@ -278,14 +281,18 @@ def ui_full(launch_kwargs):
                     duration = gr.Slider(minimum=1, maximum=120, value=10, label="Duration", interactive=True)
                 with gr.Row():
                     topk = gr.Number(label="Top-k", value=250, interactive=True)
+                with gr.Row():
                     topp = gr.Number(label="Top-p", value=0, interactive=True)
+                with gr.Row():
                     temperature = gr.Number(label="Temperature", value=1.0, interactive=True)
+                with gr.Row():
                     cfg_coef = gr.Number(label="Classifier Free Guidance", value=3.0, interactive=True)
             with gr.Column():
                 output = gr.Video(label="Generated Music")
                 audio_output = gr.Audio(label="Generated Music (wav)", type='filepath')
-                diffusion_output = gr.Video(label="MultiBand Diffusion Decoder")
-                audio_diffusion = gr.Audio(label="MultiBand Diffusion Decoder (wav)", type='filepath')
+                with gr.Row():
+                    diffusion_output = gr.Video(label="MultiBand Diffusion Decoder")
+                    audio_diffusion = gr.Audio(label="MultiBand Diffusion Decoder (wav)", type='filepath')
         submit.click(toggle_diffusion, decoder, [diffusion_output, audio_diffusion], queue=False,
                      show_progress=False).then(predict_full, inputs=[model, model_path, decoder, text, melody, duration, topk, topp,
                                                                      temperature, cfg_coef],
