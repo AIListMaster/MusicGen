@@ -241,7 +241,7 @@ def toggle_diffusion(choice):
 
 
 def ui_full(launch_kwargs):
-    with gr.Blocks(theme="Hev832/Hev832") as interface:
+    with gr.Blocks(theme="gradio/soft") as interface:
         gr.Markdown("# <div style='text-align: center;'>MusicGen</div>")
         gr.Markdown(
             """
