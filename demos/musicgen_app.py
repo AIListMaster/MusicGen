@@ -240,14 +240,14 @@ def toggle_diffusion(choice):
         return [gr.update(visible=False)] * 2
 
 
-gradio/soft = gr.themes.Base(
+gradiosoft = gr.themes.Base(
     primary_hue="blue",
     secondary_hue="indigo")
 
 
 
 def ui_full(launch_kwargs):
-    with gr.Blocks(theme=gradio/soft) as interface:
+    with gr.Blocks(theme=gradiosoft) as interface:
         gr.Markdown("# <div style='text-align: center;'>MusicGen</div>")
         gr.Markdown(
             """
