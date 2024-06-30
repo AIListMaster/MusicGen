@@ -17,6 +17,7 @@ transformers>=4.31.0  # need Encodec there.
 xformers
 demucs
 librosa
+gradio
 gradio_client==0.2.6
 torchmetrics
 encodec
